@@ -8,7 +8,7 @@ class LinkedList {
     }
     return this.traversal(node.nextNode);
   }
-  append(value, node = this.head) {
+  append(value, node = this.start) {
     const appendedNode = new Node(value, null);
     let lastNode = this.traversal(node);
     if (!lastNode) {
@@ -37,6 +37,17 @@ class LinkedList {
     const lastNode = this.traversal(this.start);
     return lastNode;
   }
+  at(index, node = this.start) {
+    const maxSize = this.size(this.start);
+    if (index < 0 || index > maxSize) {
+      return null;
+    }
+    if (index === 0) {
+      return node;
+    }
+
+    return this.at(index - 1, node.nextNode);
+  }
 }
 
 class Node {
@@ -49,4 +60,5 @@ class Node {
 const list = new LinkedList();
 list.append('dog');
 list.append('fish');
-console.log(list.tail())
+list.append('hamster')
+console.log(list.at(5));
