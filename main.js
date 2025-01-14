@@ -2,6 +2,12 @@ class LinkedList {
   constructor() {
     this.head = null;;
   }
+  traversal(node) {
+    if (node == null || node.nextNode === null) {
+      return node;
+    }
+    return this.traversal(node.nextNode);
+  }
   append(value, node = this.head) {
     const appendedNode = new Node(value, null);
     let lastNode = this.traversal(node);
@@ -11,11 +17,9 @@ class LinkedList {
       lastNode.nextNode = appendedNode;
     }
   }
-  traversal(node) {
-    if (node == null || node.nextNode === null) {
-      return node;
-    }
-    return this.traversal(node.nextNode);
+  prepend(value) {
+    const newValue = new Node(value, this.head);
+    this.head = newValue;
   }
 }
 
@@ -28,8 +32,5 @@ class Node {
 
 const list = new LinkedList();
 list.append('dog');
-list.append('hamster');
-list.append('fish');
-list.append('cow');
-const test = JSON.stringify(list);
-console.log(test);
+list.prepend('fish');
+console.log(list);
