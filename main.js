@@ -75,6 +75,21 @@ class LinkedList {
     }
     return this.constains(value, node.nextNode);
   }
+  find(value, node = this.start) {
+    if (node.value === value) {
+      return this.findIndex(node);
+    }
+    if (node === null) {
+      return null;
+    }
+    return this.find(value, node.nextNode);
+  }
+  findIndex(nodeValue, node = this.start) {
+    if (node === nodeValue) {
+      return 0;
+    }
+    return 1 + this.findIndex(nodeValue, node.nextNode);
+  }
 }
 
 class Node {
@@ -88,4 +103,4 @@ const list = new LinkedList();
 list.append('dog');
 list.append('fish');
 list.append('hamster');
-console.log(list.constains('fish'));
+console.log(list.find('fish'));
