@@ -45,8 +45,26 @@ class LinkedList {
     if (index === 0) {
       return node;
     }
-
     return this.at(index - 1, node.nextNode);
+  }
+  pop(node = this.start) {
+    // Use traversal pointers for traversing the list
+    let current = this.start;
+    let prev = this.start;
+    const lastNode = this.traversal(this.start);
+    current = lastNode;
+    if (current === this.start) {
+      return this.start = null;
+    }
+    if (node.nextNode === current) {
+      if (node === this.start) {
+        return node.nextNode = null;
+      } else {
+        return node;
+      }
+    }
+    prev = this.pop(node.nextNode);
+    prev.nextNode = null;
   }
 }
 
@@ -60,5 +78,6 @@ class Node {
 const list = new LinkedList();
 list.append('dog');
 list.append('fish');
-list.append('hamster')
-console.log(list.at(5));
+list.append('hamster');
+list.pop();
+console.log(list);
