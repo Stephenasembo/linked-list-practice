@@ -21,6 +21,15 @@ class LinkedList {
     const newValue = new Node(value, this.head);
     this.head = newValue;
   }
+  size(node = this.head) {
+    if (node === null) {
+      return 0;
+    }
+    if(node.nextNode === null) {
+      return 1;
+    }
+    return 1 + this.size(node.nextNode);
+  }
 }
 
 class Node {
@@ -32,5 +41,4 @@ class Node {
 
 const list = new LinkedList();
 list.append('dog');
-list.prepend('fish');
-console.log(list);
+console.log(list.size());
