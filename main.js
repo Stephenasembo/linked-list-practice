@@ -33,6 +33,10 @@ class LinkedList {
   head() {
     return this.start;
   }
+  tail() {
+    const lastNode = this.traversal(this.start);
+    return lastNode;
+  }
 }
 
 class Node {
@@ -44,4 +48,5 @@ class Node {
 
 const list = new LinkedList();
 list.append('dog');
-console.log(list.head());
+list.append('fish');
+console.log(list.tail())
