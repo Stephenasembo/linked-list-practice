@@ -1,6 +1,6 @@
 class LinkedList {
   constructor() {
-    this.head = null;;
+    this.start = null;
   }
   traversal(node) {
     if (node == null || node.nextNode === null) {
@@ -12,16 +12,16 @@ class LinkedList {
     const appendedNode = new Node(value, null);
     let lastNode = this.traversal(node);
     if (!lastNode) {
-      this.head = appendedNode;
+      this.start = appendedNode;
     } else {
       lastNode.nextNode = appendedNode;
     }
   }
   prepend(value) {
-    const newValue = new Node(value, this.head);
-    this.head = newValue;
+    const newValue = new Node(value, this.start);
+    this.start = newValue;
   }
-  size(node = this.head) {
+  size(node = this.start) {
     if (node === null) {
       return 0;
     }
@@ -41,4 +41,3 @@ class Node {
 
 const list = new LinkedList();
 list.append('dog');
-console.log(list.size());
