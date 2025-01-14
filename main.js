@@ -90,6 +90,16 @@ class LinkedList {
     }
     return 1 + this.findIndex(nodeValue, node.nextNode);
   }
+  toString(node = this.start, arr = []) {
+    if(node === null) {
+      return;
+    }
+    if (node.nextNode === null) {
+      return `(${node.value})`;
+    }
+    console.log(`(${node.value}) -> `);
+    return this.toString(node.nextNode);
+  }
 }
 
 class Node {
@@ -103,4 +113,4 @@ const list = new LinkedList();
 list.append('dog');
 list.append('fish');
 list.append('hamster');
-console.log(list.find('fish'));
+console.log(list.toString());
