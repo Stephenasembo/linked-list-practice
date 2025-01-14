@@ -66,6 +66,15 @@ class LinkedList {
     prev = this.pop(node.nextNode);
     prev.nextNode = null;
   }
+  constains(value, node = this.start) {
+    if (node.value === value) {
+      return true;
+    }
+    if (node === null) {
+      return false;
+    }
+    return this.constains(value, node.nextNode);
+  }
 }
 
 class Node {
@@ -79,5 +88,4 @@ const list = new LinkedList();
 list.append('dog');
 list.append('fish');
 list.append('hamster');
-list.pop();
-console.log(list);
+console.log(list.constains('fish'));
