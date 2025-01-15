@@ -102,6 +102,19 @@ class LinkedList {
     }
     return `(${node.value}) -> ${this.toString(node.nextNode)}`;
   }
+
+  insertAt(value, index, node = this.start, prev) {
+    if (index > this.size()) {
+      return;
+    }
+    if (index === 1) {
+      let newNode = new Node(value);
+      newNode.nextNode = node.nextNode.nextNode;
+      node.nextNode = newNode;
+      return newNode;
+    }
+    return this.insertAt(value, index - 1, node.nextNode)
+  }
 }
 
 class Node {
@@ -115,4 +128,5 @@ const list = new LinkedList();
 list.append('dog');
 list.append('fish');
 list.append('hamster');
+list.insertAt('cow', 1);
 console.log(list.toString());
