@@ -2,6 +2,7 @@ class LinkedList {
   constructor() {
     this.start = null;
   }
+  // Traverse the linked list and return the last node at the end
   traversal(node) {
     if (node == null || node.nextNode === null) {
       return node;
@@ -66,14 +67,15 @@ class LinkedList {
     prev = this.pop(node.nextNode);
     prev.nextNode = null;
   }
-  constains(value, node = this.start) {
+  // Test if value exists in the list
+  contains(value, node = this.start) {
     if (node.value === value) {
       return true;
     }
     if (node === null) {
       return false;
     }
-    return this.constains(value, node.nextNode);
+    return this.contains(value, node.nextNode);
   }
   find(value, node = this.start) {
     if (node.value === value) {
@@ -90,6 +92,7 @@ class LinkedList {
     }
     return 1 + this.findIndex(nodeValue, node.nextNode);
   }
+  // Create a string containing values in the list
   toString(node = this.start) {
     if(node === null) {
       return 'null';
