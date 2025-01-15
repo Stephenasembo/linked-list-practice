@@ -90,15 +90,14 @@ class LinkedList {
     }
     return 1 + this.findIndex(nodeValue, node.nextNode);
   }
-  toString(node = this.start, arr = []) {
+  toString(node = this.start) {
     if(node === null) {
-      return;
+      return 'null';
     }
     if (node.nextNode === null) {
-      return `(${node.value})`;
+      return `(${node.value}) -> null`;
     }
-    console.log(`(${node.value}) -> `);
-    return this.toString(node.nextNode);
+    return `(${node.value}) -> ${this.toString(node.nextNode)}`;
   }
 }
 
