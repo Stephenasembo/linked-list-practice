@@ -104,7 +104,7 @@ class LinkedList {
   }
 
   insertAt(value, index, node = this.start, prev) {
-    if (index > this.size()) {
+    if (index > this.size() || index < 0) {
       return;
     }
     if (index === 0) {
@@ -134,5 +134,5 @@ const list = new LinkedList();
 list.append('dog');
 list.append('fish');
 list.append('hamster');
-list.insertAt('cow', 0);
+list.insertAt('cow', -1);
 console.log(list.toString());
