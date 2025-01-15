@@ -121,6 +121,17 @@ class LinkedList {
     }
     return this.insertAt(value, index - 1, node.nextNode)
   }
+  removeAt(index, node = this.start) {
+    if (index === 0) {
+      this.start = node.nextNode;
+      return;
+    }
+    if (index === 1) {
+      node.nextNode = node.nextNode.nextNode;
+      return node;
+    }
+    return this.removeAt(index-1, node.nextNode);
+  }
 }
 
 class Node {
@@ -134,5 +145,5 @@ const list = new LinkedList();
 list.append('dog');
 list.append('fish');
 list.append('hamster');
-list.insertAt('cow', -1);
+list.removeAt(0);
 console.log(list.toString());
