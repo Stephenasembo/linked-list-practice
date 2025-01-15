@@ -107,6 +107,12 @@ class LinkedList {
     if (index > this.size()) {
       return;
     }
+    if (index === 0) {
+      let newNode = new Node(value);
+      newNode.nextNode = node;
+      this.start = newNode;
+      return newNode;
+    }
     if (index === 1) {
       let newNode = new Node(value);
       newNode.nextNode = node.nextNode;
@@ -128,5 +134,5 @@ const list = new LinkedList();
 list.append('dog');
 list.append('fish');
 list.append('hamster');
-list.insertAt('cow', 1);
+list.insertAt('cow', 0);
 console.log(list.toString());
