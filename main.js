@@ -109,7 +109,7 @@ class LinkedList {
     }
     if (index === 1) {
       let newNode = new Node(value);
-      newNode.nextNode = node.nextNode.nextNode;
+      newNode.nextNode = node.nextNode;
       node.nextNode = newNode;
       return newNode;
     }
